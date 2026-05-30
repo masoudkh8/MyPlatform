@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Register - B2B Traders Platform{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+  <div class="auth-card">
+    <h1 class="auth-title">Create Account</h1>
+    <p class="auth-subtitle">Join the B2B traders community</p>
+    
+    <form method="POST" class="auth-form">
+      <div class="input-group">
+        <input type="text" name="full_name" class="input-field" placeholder="Full Name" required>
+      </div>
+      
+      <div class="input-group">
+        <input type="email" name="email" class="input-field" placeholder="Email address" required>
+      </div>
+      
+      <div class="input-group">
+        <input type="password" name="password" class="input-field" placeholder="Password" required minlength="6">
+      </div>
+      
+      <div class="input-group">
+        <input type="text" name="company_name" class="input-field" placeholder="Company Name" required>
+      </div>
+      
+      <button type="submit" class="btn btn-primary btn-block auth-submit">Create Account</button>
+    </form>
+    
+    <div class="auth-divider">
+      Already have an account? 
+      <a href="{{ url_for('main.login') }}" class="auth-link">Sign in</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

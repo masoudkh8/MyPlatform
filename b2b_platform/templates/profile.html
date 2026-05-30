@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block title %}{{ user.full_name }} - Profile{% endblock %}
+
+{% block content %}
+<div class="page-container">
+  <!-- Profile Card -->
+  <div class="card-white" style="margin: 16px;">
+    <div class="profile-header">
+      <div class="avatar-container">
+        <img src="{{ url_for('static', filename='images/avatar-placeholder.png') }}" alt="{{ user.full_name }}" class="avatar" onerror="this.style.display='none'">
+        {% if user.is_verified %}
+        <div class="verification-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        {% endif %}
+      </div>
+      
+      <h1 class="company-name">{{ company.name if company else user.full_name }}</h1>
+      
+      {% if company and company.location %}
+      <div class="company-location">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        {{ company.location }}
+      </div>
+      {% endif %}
+      
+      <div class="rating-stars">
+        {% for i in range(5) %}
+        <svg class="star" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#F39C12" stroke="#F39C12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+        {% endfor %}
+      </div>
+    </div>
+    
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-number">{{ posts_count }}</span>
+        <span class="stat-label">Posts</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">{{ connections_count }}</span>
+        <span class="stat-label">Connections</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">{{ company.rating if company and company.rating else '0.0' }}</span>
+        <span class="stat-label">Rating</span>
+      </div>
+    </div>
+    
+    <!-- About Section -->
+    <div style="padding: 0 16px 16px;">
+      <h2 style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">About</h2>
+      {% if company and company.description %}
+      <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+        {{ company.description[:150] }}{% if company.description|length > 150 %}...{% endif %}
+      </p>
+      {% else %}
+      <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+        Professional trading company specializing in international commerce and business partnerships.
+      </p>
+      {% endif %}
+    </div>
+    
+    <!-- Services Offered -->
+    {% if company and company.services.count() > 0 %}
+    <div style="padding: 0 16px 16px;">
+      <h2 style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;">Services Offered</h2>
+      <ul style="list-style: none; padding: 0;">
+        {% for service in company.services %}
+        <li style="font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="#2ECC71" stroke="none">
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+          {{ service.name }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    
+    <!-- Action Buttons -->
+    <div class="btn-group" style="padding: 0 16px 24px;">
+      <button class="btn btn-primary">Message</button>
+      <button class="btn btn-primary">Request</button>
+      <button class="btn btn-success">Connect</button>
+    </div>
+  </div>
+  
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="{{ url_for('main.home') }}" class="nav-item">
+      <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span class="nav-label">Home</span>
+    </a>
+    
+    <a href="{{ url_for('main.dashboard') }}" class="nav-item">
+      <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+      </svg>
+      <span class="nav-label">Trade</span>
+    </a>
+    
+    <a href="{{ url_for('main.feed') }}" class="nav-item">
+      <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+      </svg>
+      <span class="nav-label">Documents</span>
+    </a>
+    
+    <a href="{{ url_for('main.profile', user_id=current_user.id) }}" class="nav-item active">
+      <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <span class="nav-label">Profile</span>
+    </a>
+    
+    <a href="{{ url_for('main.logout') }}" class="nav-item">
+      <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+        <polyline points="16 17 21 12 16 7"></polyline>
+        <line x1="21" y1="12" x2="9" y2="12"></line>
+      </svg>
+      <span class="nav-label">Logout</span>
+    </a>
+  </nav>
+</div>
+{% endblock %}
