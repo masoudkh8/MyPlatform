@@ -9,6 +9,7 @@
     <p class="auth-subtitle">Join the B2B traders community</p>
     
     <form method="POST" class="auth-form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
       <div class="input-group">
         <input type="text" name="full_name" class="input-field" placeholder="Full Name" required>
       </div>

@@ -1,0 +1,77 @@
+Persian Word -> English Translation
+-----------------------------------
+مدیریت کاربران -> User Management
+کاربران -> Users
+نام کاربری -> Username
+نام -> Name
+ایمیل -> Email
+نقش -> Role
+عملیات -> Actions
+ویرایش -> Edit
+حذف -> Delete
+افزودن کاربر جدید -> Add New User
+جستجو -> Search
+فیلتر بر اساس نقش -> Filter by Role
+همه -> All
+مدیر -> Admin
+کاربر عادی -> Regular User
+تایید -> Confirm
+انصراف -> Cancel
+آیا مطمئن هستید؟ -> Are you sure?
+بله -> Yes
+خیر -> No
+پیام سیستم -> System Message
+خطا -> Error
+موفقیت آمیز -> Success
+ذخیره -> Save
+بازگشت -> Back
+صفحه اصلی -> Home
+خروج -> Logout
+پروفایل -> Profile
+تنظیمات -> Settings
+رمز عبور -> Password
+تکرار رمز عبور -> Repeat Password
+تغییر رمز عبور -> Change Password
+وضعیت -> Status
+فعال -> Active
+غیرفعال -> Inactive
+تاریخ ایجاد -> Created Date
+آخرین ورود -> Last Login
+انتخاب نقش -> Select Role
+سطح دسترسی -> Permission Level
+مدیریت دسترسی‌ها -> Manage Permissions
+دسترسی‌ها -> Permissions
+خواندن -> Read
+نوشتن -> Write
+حذف کردن -> Delete
+اجرای عملیات -> Execute Operations
+انتخاب همه -> Select All
+لغو انتخاب همه -> Deselect All
+اعمال تغییرات -> Apply Changes
+لیست کاربران -> User List
+جزئیات کاربر -> User Details
+نقش‌های موجود -> Available Roles
+کاربر یافت نشد -> No user found
+لطفا صبر کنید -> Please wait
+بارگذاری... -> Loading...
+ثبت نام -> Register
+ورود -> Login
+فراموشی رمز عبور -> Forgot Password
+تماس با پشتیبانی -> Contact Support
+راهنما -> Help
+درباره ما -> About Us
+شرایط و قوانین -> Terms and Conditions
+حریم خصوصی -> Privacy Policy
+کد تایید -> Verification Code
+ارسال مجدد -> Resend
+اعتبارسنجی -> Validation
+معتبر -> Valid
+نامعتبر -> Invalid
+پر کردن اجباری -> Required Field
+طول نامعتبر -> Invalid Length
+فرمت نامعتبر -> Invalid Format
+رمز عبور ضعیف -> Weak Password
+رمز عبور متوسط -> Medium Password
+رمز عبور قوی -> Strong Password
+تطابق رمز عبور -> Password Match
+عدم تطابق رمز عبور -> Password Mismatch

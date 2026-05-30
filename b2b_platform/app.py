@@ -5,6 +5,7 @@ Run script for B2B Traders Platform
 import os
 import sys
 
+
 # Add the parent directory to Python path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -14,14 +15,14 @@ from b2b_platform.models import User, Company, Post
 def seed_database():
     """Seed the database with sample data"""
     print("Seeding database with sample data...")
-    
+
     # Create sample user
     user = User.query.filter_by(email='demo@b2bplatform.com').first()
     
     if not user:
         user = User(
             email='demo@b2bplatform.com',
-            full_name='Ali Mohammadi',
+            full_name='Masoud kh',
             is_verified=True
         )
         user.set_password('demo123')
@@ -89,7 +90,13 @@ if __name__ == '__main__':
     # Check if we should seed the database
     if len(sys.argv) > 1 and sys.argv[1] == '--seed':
         with app.app_context():
-            seed_database()
+            try:
+                seed_database()
+            except Exception as e:
+                print(f"Error seeding database: {e}")
+                import traceback
+
+                traceback.print_exc()
     else:
         # Run the application
         print("=" * 50)

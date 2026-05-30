@@ -9,6 +9,7 @@
     <p class="auth-subtitle">Sign in to continue to your account</p>
     
     <form method="POST" class="auth-form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
       <div class="input-group">
         <input type="email" name="email" class="input-field" placeholder="Email address" required>
       </div>
